@@ -17,17 +17,17 @@ chrome.setDefaultService(new chrome.ServiceBuilder(chromedriver.path).build());/
 
 let driver
 
-Before(function () {
-  driver = initDriver();
+Before(async () => { // utilizando o hook before para acessar a pagina
+  driver = initDriver(); // utilizando a função para iniciar o Driver
+  await driver.get('http://automationpractice.com/index.php'); // abrindo a pagina no Browser
+
 });
 
 After(function () {
-  // driver.quit();
 });
 
-// Acessando a pagina e clicando em no botão de login
+// clicando no botão de login
 Given('que acesso a pagina principal, clico em Sign in pra realizar o login', async () => {
-  await driver.get('http://automationpractice.com/index.php')
   await driver.findElement(By.className('login')).click();
 
 });
@@ -45,6 +45,7 @@ When('submeto meu email com {string} e senha com {string}', async (email, pass) 
 Then('devo ver o meu nome {string} como usuario logado', async (name) => {
   let user = await driver.findElement(By.className('account')).getText();
   expect(user).equals(name);
+
 });
 
 
@@ -53,6 +54,7 @@ Then('vejo a mensagem de erro: {string}', async (string) => {
   let errorMsg = await driver.findElement(By.xpath('//*[@id="center_column"]/div[1]/ol/li')).getText();
 
   expect(string).equals(errorMsg);
+
 
 
 }); 
