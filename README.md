@@ -18,7 +18,7 @@ Primeiro, é necessario ter o Node instalado [Node](https://nodejs.org/en/)
 
 
 Faça um clone do repositorio com o comando abaixo::
-### `git clone https://github.com/Jefferson-W/ChallengeME-Cypress.git`
+### `git clone https://github.com/Jefferson-W/ChallengeME-Cucumber.git`
 
 Para instalar as dependências use :
 ### `npm install`
